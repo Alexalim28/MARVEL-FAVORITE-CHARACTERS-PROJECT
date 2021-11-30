@@ -1,3 +1,5 @@
+import React, { useContext } from "react";
+import CharacterContext from "../CharacterContext";
 import {
   Button,
   Card,
@@ -6,9 +8,6 @@ import {
   CardHeader,
   CardMedia,
 } from "@mui/material";
-import React from "react";
-import { useContext } from "react";
-import CharacterContext from "../CharacterContext";
 
 function MarvelCard({ id, name, description, image, urls }) {
   const thumbnailUrl = `${image.path}/portrait_xlarge.${image.extension}`;
@@ -49,16 +48,21 @@ function MarvelCard({ id, name, description, image, urls }) {
         />
         <CardContent>{description.slice(0, 100)}...</CardContent>
         <CardActions>
-          <Button size="small" href={detailsUrl} target="_blank">
+          <Button
+            size="small"
+            href={detailsUrl}
+            target="_blank"
+            sx={{ color: "#adb5bd" }}
+          >
             Learn More
           </Button>
 
           <Button
             size="small"
-            sx={{ backgroundColor: "#fff", ml: "auto" }}
+            sx={{ color: "#adb5bd", ml: "auto" }}
             onClick={() => handleClick(id)}
           >
-            {res ? "Remove favorite" : "Add to favorites"}
+            {res ? "Remove from favorites" : "Add to favorites"}
           </Button>
         </CardActions>
       </Card>

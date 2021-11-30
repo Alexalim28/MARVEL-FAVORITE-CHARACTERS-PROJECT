@@ -14,12 +14,12 @@ export const CharacterContextProvider = (props) => {
   let value;
 
   useEffect(() => {
-    const cachedData = localStorage.getItem("favoriteCharacters");
+    const cachedData = sessionStorage.getItem("favoriteCharacters");
     if (cachedData) setFavorites(JSON.parse(cachedData));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("favoriteCharacters", JSON.stringify(favorites));
+    sessionStorage.setItem("favoriteCharacters", JSON.stringify(favorites));
   }, [favorites]);
 
   const addFavorite = (id, name, description, image, details) => {

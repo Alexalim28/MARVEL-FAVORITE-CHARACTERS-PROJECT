@@ -1,16 +1,13 @@
-import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import VideogameAssetIcon from "@mui/icons-material/VideogameAsset";
-import { Typography } from "@mui/material";
+import React, { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Box } from "@mui/system";
-import Avatar from "@mui/material/Avatar";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { Typography, AppBar, Toolbar, Avatar } from "@mui/material";
+import VideogameAssetIcon from "@mui/icons-material/VideogameAsset";
 import CharacterContext from "../CharacterContext";
 
 const Header = () => {
   const { total } = useContext(CharacterContext);
+  const location = useLocation();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -23,12 +20,20 @@ const Header = () => {
           </Typography>
           <Box sx={{ display: "flex", marginLeft: "auto" }}>
             <Link to="/">
-              <Typography variant="h6" sx={{ mx: 2 }} color="#adb5bd">
+              <Typography
+                variant="h6"
+                sx={{ mx: 2 }}
+                color={location.pathname === "/" ? "#fff" : "#adb5bd"}
+              >
                 Home
               </Typography>
             </Link>
             <Link to="/favorites">
-              <Typography variant="h6" sx={{ mx: 2 }} color="#adb5bd">
+              <Typography
+                variant="h6"
+                sx={{ mx: 2 }}
+                color={location.pathname === "/favorites" ? "#fff" : "#adb5bd"}
+              >
                 Favorites
               </Typography>
             </Link>
