@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Container, Grid, CircularProgress, Stack } from "@mui/material";
 import MarvelCard from "../components/MarvelCard";
 
-const hash = "5489fb426489612a566050653cfb69af";
-const url = `https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=a4fe8f656b34bf20fe3f04109c01baa7&hash=${hash}`;
+const hash = process.env.HASH;
+const apikey = process.env.API_KEY;
+const url = `https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=${apikey}&hash=${hash}`;
 
 function Home() {
   const [characters, setCharacters] = useState([]);
